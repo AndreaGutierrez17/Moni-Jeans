@@ -1,0 +1,186 @@
+/* Reset y fuente */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #fdd700, #0033a0, #ce1126); /* Colombia style */
+  opacity: 0.7;
+  padding: 10px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.menu-left {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-left li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-left li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* fondo claro translúcido */
+  color: #FFD700; /* dorado bonito, puedes cambiarlo */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-logo img {
+  height: 40px;
+  max-height: 50px;
+  margin-right: 20px;
+}
+
+/* Header con degradado colombiano */
+.header {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(135deg, #f4c300, #0033a0, #d60000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInHeader 1.2s ease-out forwards;
+}
+
+/* Contenedor centrado */
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* Imagen modelo a la derecha */
+.model-img img {
+  max-height: 500px;
+  width: auto;
+  animation: slideInRight 1.2s ease-out forwards;
+  margin-top: 40px;
+}
+
+/* Animaciones */
+@keyframes fadeInHeader {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+  }
+
+  .model-img img {
+    max-height: 300px;
+  }
+}
+
+
+.location-icon {
+  color: #05622a;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.social-icons-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.social-icons-fixed a {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.social-icons-fixed i {
+  font-size: 28px;
+}
+
+
+
+footer.footer {
+  padding: 30px 20px 10px;
+  background: linear-gradient(135deg, #f4c300, #0033a0, #d60000);
+  color: #fbf3f3;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-top: 2px solid #ddd;
+}
+
+footer.footer p {
+  font-size: 14px;
+  color: #fdfbfb;
+  margin-top: 20px;
+}
+
+footer.footer img.logo {
+  width: 80px;
+  margin: 10px auto;
+  display: block;
+}
+/* Agregar tus estilos personalizados aquí */
+ .section { margin: 20px 0; }
+ .social-icons i { font-size: 30px; margin-right: 15px; }
+ .whatsapp-icon { font-size: 30px; color: green; cursor: pointer; }
+ .footer { background-color: #f1f1f1; padding: 10px 0; text-align: center; }
+ /* Estilos para la ubicación */
+ .location-icon { font-size: 30px; margin-right: 5px; }
+ .navbar-brand { font-size: 24px; font-weight: bold; }
+ /* Espaciado de las redes sociales en la parte superior derecha */
+ .social-icons { position: absolute; right: 10px; top: 10px; }
+ /* Colores para las redes sociales */
+ .facebook-icon { color: #1877f2; } /* Color azul de Facebook */
+ .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d); -webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
+ .tiktok-icon { color: #000000; } /* Color negro de TikTok *
