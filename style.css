@@ -1,13 +1,6 @@
-/* Reset y fuente */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #000;
+  background-color: #fff1f1;
   color: #fff;
 }
 
@@ -224,71 +217,5 @@ footer.footer img.logo {
  .facebook-icon { color: #1877f2; } /* Color azul de Facebook */
  .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d); -webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
  .tiktok-icon { color: #000000; } /* Color negro de TikTok */
-
- @media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .model-img img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
-  }
-
-  .menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .menu-left {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .menu-logo {
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  .bloque-principal {
-    flex-direction: column;
-  }
-
-  .bloque-footer {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .footer-icons {
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .container-nosotros {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .container-nosotros p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .bloque-video iframe {
-    width: 100%;
-    height: 200px;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-}
 
  
