@@ -26,14 +26,14 @@ body {
 }
 
 .menu-left li a {
-  color: white;
+  color: #0033a0;
   text-decoration: none;
   font-weight: bold;
 }
 
 .menu-left li a:hover {
   background-color: rgba(255, 255, 255, 0.2); /* fondo claro translúcido */
-  color: #FFD700; /* dorado bonito, puedes cambiarlo */
+  color: white; /* dorado bonito, puedes cambiarlo */
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
@@ -42,6 +42,60 @@ body {
   height: 40px;
   max-height: 50px;
   margin-right: 20px;
+}
+
+/* Botón hamburguesa (oculto en desktop) */
+.burger {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 5px 0;
+  background: #fff; /* respeta tu diseño sobre el degradado */
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+/* ------- MÓVIL ------- */
+@media (max-width: 768px) {
+  /* Mostrar botón; mantener logo y menú en la barra */
+  .burger { display: block; }
+
+  /* La barra sigue igual; solo cambiamos el comportamiento del UL */
+  .menu {
+    gap: 10px;
+  }
+
+  /* Oculta el menú horizontal por defecto en móvil */
+  .menu-left {
+    display: none;              /* se mostrará al abrir */
+    position: absolute;
+    top: 100%;                  /* pegado debajo de la barra */
+    left: 0;
+    width: 100%;
+    background: inherit;        /* usa el mismo degradado de la barra */
+    opacity: 0.98;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  /* Cuando se abre */
+  .menu-left.open { display: flex; }
+
+  /* Asegura legibilidad del texto en el panel */
+  .menu-left li a {
+    padding: 8px 14px;
+  }
 }
 
 /* Header con degradado colombiano */
