@@ -211,7 +211,7 @@ body {
     line-height: 1.75;
     color: var(--moni-muted);
     margin: 0;
-    text-align: center;              /* centrado del párrafo */
+    text-align: center;            
     max-width: 58ch;
     margin-inline: auto;
   }
