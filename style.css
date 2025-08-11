@@ -26,7 +26,7 @@ body {
 }
 
 .menu-left li a {
-  color: #0033a0;
+  color: #0a0a0a;
   text-decoration: none;
   font-weight: bold;
 }
@@ -128,7 +128,7 @@ body {
 }
 
 .sobre-nosotros {
-  background-color: #ffffff;
+  background-color: #fef4e1;
   padding: 80px 20px;
   color: #333;
   text-align: center;
@@ -165,6 +165,95 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: #000;
+}
+
+ :root{
+    --moni-bg: #efe6d9;          /* beige suave de fondo */
+    --moni-ink: #2b2623;         /* texto principal */
+    --moni-muted:#6e645e;        /* texto suave */
+    --moni-shadow: 0 10px 30px rgba(0,0,0,.12);
+    --card-radius: 18px;
+  }
+
+  /* Sección */
+  .moni-hero{
+    background: var(--moni-bg);
+    padding: clamp(48px, 6vw, 88px) 16px;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: var(--moni-ink);
+  }
+  .moni-container{
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Grid responsivo */
+  .moni-grid{
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: center;
+  }
+
+  /* Texto */
+  .moni-title{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: clamp(28px, 4.2vw, 54px);
+    margin: 0 0 14px;
+    text-align: center;              /* centrado del título */
+  }
+
+
+  .moni-lead{
+    font-size: clamp(16px, 1.5vw, 18px);
+    line-height: 1.75;
+    color: var(--moni-muted);
+    margin: 0;
+    text-align: center;              /* centrado del párrafo */
+    max-width: 58ch;
+    margin-inline: auto;
+  }
+
+  /* Tarjeta de video */
+  .moni-media{ width:100%; }
+  .moni-card{
+    background: #fff;
+    border-radius: var(--card-radius);
+    box-shadow: var(--moni-shadow);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .moni-video{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;   
+    display: block;
+    object-fit: cover;
+    background: #000;
+  }
+
+   /* Animación sutil */
+  .moni-copy, .moni-card{ opacity: 0; transform: translateY(12px); animation: moniFade .8s ease-out .05s forwards; }
+  .moni-card{ animation-delay: .15s; }
+  @keyframes moniFade{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* Responsive: stack en móviles */
+  @media (max-width: 900px){
+    .moni-grid{ grid-template-columns: 1fr; }
+    .moni-media{ order: 2; }
+    .moni-copy{ order: 1; }
+  }
+
+.moni-video {
+  width: 100%;
+  height: auto;        /* mantiene altura original */
+  display: block;
+  background: #000;
+  object-fit: contain; /* muestra todo el video sin recortar */
 }
 
 /* Animaciones */
@@ -271,5 +360,17 @@ footer.footer img.logo {
  .facebook-icon { color: #1877f2; } /* Color azul de Facebook */
  .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d); -webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
  .tiktok-icon { color: #000000; } /* Color negro de TikTok */
-
  
+ /* REPARA degradado bandera */
+.moni-gradient {
+  background: linear-gradient(90deg,#FFD600 0%, #FFD600 33%, #1C47F2 33%, #1C47F2 66%, #E2182D 66%, #E2182D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ANIMACIÓN para la sección completa */
+.moni-hero {
+  animation: fadeInHeader 1.2s ease-out forwards;
+
+}
