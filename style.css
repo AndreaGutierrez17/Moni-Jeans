@@ -225,14 +225,7 @@ body {
     overflow: hidden;
     border: 1px solid rgba(0,0,0,.06);
   }
-  .moni-video{
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;   
-    display: block;
-    object-fit: cover;
-    background: #000;
-  }
+  
 
    /* Animación sutil */
   .moni-copy, .moni-card{ opacity: 0; transform: translateY(12px); animation: moniFade .8s ease-out .05s forwards; }
@@ -358,19 +351,98 @@ footer.footer img.logo {
  .social-icons { position: absolute; right: 10px; top: 10px; }
  /* Colores para las redes sociales */
  .facebook-icon { color: #1877f2; } /* Color azul de Facebook */
- .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d); -webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
+ .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d);-webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
  .tiktok-icon { color: #000000; } /* Color negro de TikTok */
  
- /* REPARA degradado bandera */
-.moni-gradient {
-  background: linear-gradient(90deg,#FFD600 0%, #FFD600 33%, #1C47F2 33%, #1C47F2 66%, #E2182D 66%, #E2182D 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 
 /* ANIMACIÓN para la sección completa */
 .moni-hero {
   animation: fadeInHeader 1.2s ease-out forwards;
 
+}
+
+/* ——— 1) Título con degradado en TODO el texto ——— */
+.moni-title{
+  /* bandera: amarillo, azul, rojo */
+  background: linear-gradient(
+    90deg,
+    #FFD600 0%, #FFD600 33%,
+    #1C47F2 33%, #1C47F2 66%,
+    #E2182D 66%, #E2182D 100%
+  );
+  -webkit-background-clip: text;   /* compat. WebKit */
+  background-clip: text;           /* propiedad estándar (quita el warning) */
+  color: transparent;
+}
+
+/* Si dejas el <span class="moni-gradient"> en el H1,
+   anulamos su degradado para que herede el del título completo */
+.moni-title .moni-gradient{
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: inherit !important; /* hereda el 'transparent' del padre */
+}
+
+/* ——— 2) Mantén la animación de entrada del bloque hero ——— */
+/* Ya tienes fadeInHeader en .moni-hero; añadimos una sutil al texto/video */
+.moni-copy{ 
+  opacity: 0; transform: translateY(12px);
+  animation: moniFade .8s ease-out .05s forwards;
+}
+.moni-card{ 
+  opacity: 0; transform: translateY(12px);
+  animation: moniFade .8s ease-out .15s forwards;
+}
+@keyframes moniFade{ to{ opacity:1; transform: translateY(0); } }
+
+.moni-title {
+  color: #2B2623;              /* texto base */
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: clamp(28px, 4.2vw, 54px);
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+/* “Moni Jeans” en plata + brillo sutil */
+.moni-title__brand {
+  color: #C7CBD1;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6),
+  0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+/* Limita el ancho de la tarjeta del video en desktop para que no invada la hoja */
+.moni-card {
+  max-width: 460px;            /* buen tamaño de vitrina en escritorio */
+  margin-left: auto;           /* mantiene alineado a la derecha en el grid */
+  margin-right: 0;
+}
+
+/* El video siempre completo, sin recortes */
+.moni-video {
+  width: 100%;
+  height: auto;               /* mantiene proporción natural */
+  aspect-ratio: 9 / 16;       /* vertical */
+  object-fit: contain;        /* que se vea todo el cuadro */
+  background: #000;           /* letterbox elegante */
+  border-radius: 18px;        /* mismo radio de la tarjeta */
+}
+
+/* Evita que se vuelva larguísimo en pantallas bajas */
+@media (min-width: 992px){
+  .moni-video { max-height: 65vh; }
+}
+
+/* En tablet y móvil: que ocupe todo el ancho del contenedor y se centre */
+@media (max-width: 991px){
+  .moni-card {
+    max-width: 420px;         /* un poco más compacto en tablet */
+    margin: 0 auto;           /* centrado */
+  }
+}
+@media (max-width: 600px){
+  .moni-card { max-width: 92vw; }
 }
