@@ -4,6 +4,8 @@ body {
   color: #fff;
 }
 
+body > .header { padding-top: 72px; }
+
 .menu {
   display: flex;
   justify-content: space-between;
@@ -14,7 +16,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .menu-left {
@@ -241,13 +243,7 @@ body {
     .moni-copy{ order: 1; }
   }
 
-.moni-video {
-  width: 100%;
-  height: auto;        /* mantiene altura original */
-  display: block;
-  background: #000;
-  object-fit: contain; /* muestra todo el video sin recortar */
-}
+
 
 /* Animaciones */
 @keyframes fadeInHeader {
@@ -361,19 +357,6 @@ footer.footer img.logo {
 
 }
 
-/* ——— 1) Título con degradado en TODO el texto ——— */
-.moni-title{
-  /* bandera: amarillo, azul, rojo */
-  background: linear-gradient(
-    90deg,
-    #FFD600 0%, #FFD600 33%,
-    #1C47F2 33%, #1C47F2 66%,
-    #E2182D 66%, #E2182D 100%
-  );
-  -webkit-background-clip: text;   /* compat. WebKit */
-  background-clip: text;           /* propiedad estándar (quita el warning) */
-  color: transparent;
-}
 
 /* Si dejas el <span class="moni-gradient"> en el H1,
    anulamos su degradado para que herede el del título completo */
@@ -480,14 +463,13 @@ footer.footer img.logo {
   font-size: clamp(14px,1.6vw,16px);
 }
 
-/* Grid */
-.mj-grid{
+.mj-benefits .mj-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: clamp(16px,2.4vw,28px);
 }
-@media (max-width: 990px){ .mj-grid{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px){ .mj-grid{ grid-template-columns: 1fr; } }
+@media (max-width: 990px){ .mj-benefits .mj-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px){ .mj-benefits .mj-grid{ grid-template-columns: 1fr; } }
 
 /* Card */
 .feature-card{
@@ -669,4 +651,65 @@ footer.footer img.logo {
 /* Respeta “reducir movimiento” */
 @media (prefers-reduced-motion: reduce){
   .p-card, .btn-catalogo{ transition:none; animation:none }
+}
+
+/* ===== Animaciones de entrada para Productos ===== */
+
+/* Estado inicial: oculto/sutil */
+.mj-products .mj-products__head,
+.mj-products .mj-grid .p-card,
+.mj-products .mj-cta {
+  opacity: 0;
+  transform: translateY(14px);
+  will-change: transform, opacity;
+}
+
+/* Al entrar al viewport, animamos */
+.mj-products.is-in .mj-products__head {
+  animation: mj-fade-up .65s ease-out forwards;
+}
+.mj-products.is-in .mj-cta {
+  animation: mj-zoom-soft .55s ease-out .25s forwards;
+}
+
+/* Cards con stagger */
+.mj-products.is-in .mj-grid .p-card {
+  animation: mj-rise-card .58s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+/* Escalonado: 10 tarjetas */
+.mj-products.is-in .mj-grid .p-card:nth-child(1)  { animation-delay: .06s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(2)  { animation-delay: .12s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(3)  { animation-delay: .18s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(4)  { animation-delay: .24s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(5)  { animation-delay: .30s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(6)  { animation-delay: .36s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(7)  { animation-delay: .42s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(8)  { animation-delay: .48s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(9)  { animation-delay: .54s; }
+.mj-products.is-in .mj-grid .p-card:nth-child(10) { animation-delay: .60s; }
+
+/* Keyframes */
+@keyframes mj-fade-up {
+  from { opacity:0; transform: translateY(16px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes mj-zoom-soft {
+  from { opacity:0; transform: scale(.98); }
+  to   { opacity:1; transform: scale(1); }
+}
+@keyframes mj-rise-card {
+  from { opacity:0; transform: translateY(16px) scale(.995); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* Accesibilidad: respeta reducir movimiento */
+@media (prefers-reduced-motion: reduce){
+  .mj-products .mj-products__head,
+  .mj-products .mj-grid .p-card,
+  .mj-products .mj-cta {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
