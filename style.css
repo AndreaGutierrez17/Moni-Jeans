@@ -126,7 +126,7 @@ body > .header { padding-top: 72px; }
   max-height: 500px;
   width: auto;
   animation: slideInRight 1.2s ease-out forwards;
-  margin-top: -80px;
+  margin-top: 40px;
 }
 
 .sobre-nosotros {
@@ -1010,7 +1010,7 @@ footer.footer img.logo {
   inset:0;
   background: url("img/logo-moni.png") no-repeat center center;
   /* tamaño responsivo: crece con el ancho de la pantalla */
-  background-size: clamp(600px, 90vw, 1400px);
+  background-size: clamp(400px, 80vw, 1200px);
   opacity: .12;
   pointer-events:none;
   z-index: 0;
