@@ -6,98 +6,41 @@ body {
 
 body > .header { padding-top: 72px; }
 
-.menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to right, #fdd700, #0033a0, #ce1126); /* Colombia style */
-  opacity: 0.7;
-  padding: 10px 30px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+/* Barra fija */
+.menu{
+  display:flex; align-items:center; justify-content:space-between;
+  position:fixed; top:0; left:0; width:100%;
+  padding:10px 16px; z-index:1000;
+  background: linear-gradient(to right, #fdd700, #0033a0, #ce1126);
 }
 
-.menu-left {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* Lista horizontal (desktop) */
+.menu-left{ display:flex; gap:20px; list-style:none; margin:0; padding:0; }
+.menu-left a{ color:#fff; text-decoration:none; font-weight:700; }
 
-.menu-left li a {
-  color: #f6f2f2;
-  text-decoration: none;
-  font-weight: bold;
-}
+/* Botón hamburguesa oculto en desktop */
+.burger{ display:none; background:transparent; border:0; cursor:pointer; padding:8px; }
+.burger span{ display:block; width:26px; height:3px; margin:5px 0; background:#fff; }
 
-.menu-left li a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* fondo claro translúcido */
-  color: white; /* dorado bonito, puedes cambiarlo */
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-}
+/* --- Móvil --- */
+@media (max-width:768px){
+  .burger{ display:block; }                 /* mostrar botón */
 
-.menu-logo img {
-  height: 40px;
-  max-height: 50px;
-  margin-right: 20px;
-}
-
-/* Botón hamburguesa (oculto en desktop) */
-.burger {
-  display: none;
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.burger span {
-  display: block;
-  width: 26px;
-  height: 3px;
-  margin: 5px 0;
-  background: #fff; /* respeta tu diseño sobre el degradado */
-  transition: transform .3s ease, opacity .3s ease;
-}
-
-/* ------- MÓVIL ------- */
-@media (max-width: 768px) {
-  /* Mostrar botón; mantener logo y menú en la barra */
-  .burger { display: block; }
-
-  /* La barra sigue igual; solo cambiamos el comportamiento del UL */
-  .menu {
-    gap: 10px;
+  /* Panel desplegable */
+  .menu-left{
+    display:none;                           /* oculto por defecto */
+    position:absolute; top:100%; left:0; width:100%;
+    flex-direction:column; align-items:center; gap:12px;
+    padding:14px 0;
+    background: inherit;                    /* mismo degradado */
+    opacity:.98;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
   }
+  .menu-left.open{ display:flex; }          /* visible al abrir */
 
-  /* Oculta el menú horizontal por defecto en móvil */
-  .menu-left {
-    display: none;              /* se mostrará al abrir */
-    position: absolute;
-    top: 100%;                  /* pegado debajo de la barra */
-    left: 0;
-    width: 100%;
-    background: inherit;        /* usa el mismo degradado de la barra */
-    opacity: 0.98;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
-  /* Cuando se abre */
-  .menu-left.open { display: flex; }
-
-  /* Asegura legibilidad del texto en el panel */
-  .menu-left li a {
-    padding: 8px 14px;
-  }
+  /* Asegura que el botón no quede tapado */
+  .burger{ margin-left:auto; z-index:1001; }
 }
 
 /* Header con degradado colombiano */
@@ -126,7 +69,7 @@ body > .header { padding-top: 72px; }
   max-height: 500px;
   width: auto;
   animation: slideInRight 1.2s ease-out forwards;
-  margin-top: 40px;
+  margin-top: -80px;
 }
 
 .sobre-nosotros {
@@ -1010,7 +953,7 @@ footer.footer img.logo {
   inset:0;
   background: url("img/logo-moni.png") no-repeat center center;
   /* tamaño responsivo: crece con el ancho de la pantalla */
-  background-size: clamp(400px, 80vw, 1200px);
+  background-size: clamp(600px, 90vw, 1400px);
   opacity: .12;
   pointer-events:none;
   z-index: 0;
