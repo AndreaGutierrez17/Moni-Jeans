@@ -7,7 +7,7 @@
   <link rel="icon" href="img/moni.png">
   <meta property="og:title" content="Moni Jeans — Mayoreo de jeans corte colombiano">
   <meta property="og:description" content="Calidad, ajuste y soporte para que vendas más fácil.">
-  <meta property="og:image" content="img/og-cover.jpg">
+  <meta property="og:image" content="img/logo-moni.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://TU-DOMINIO-o-GitHub-Pages/">
   <meta name="twitter:card" content="summary_large_image">
@@ -627,6 +627,46 @@
 
 
   
+
+
+
+
+<script>
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('#menu-mobile a').forEach(a => {
+    a.addEventListener('click', () => {
+      const list   = document.getElementById('menu-mobile');
+      const burger = document.querySelector('.burger');
+      list.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // (Opcional) Cerrar si tocas fuera del menú en móvil
+  document.addEventListener('click', (e) => {
+    const menu   = document.querySelector('.menu');
+    const list   = document.getElementById('menu-mobile');
+    const burger = document.querySelector('.burger');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (isMobile && list.classList.contains('open') && !menu.contains(e.target)) {
+      list.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // (Opcional) Cerrar si cambias el tamaño a desktop
+  window.addEventListener('resize', () => {
+    const list   = document.getElementById('menu-mobile');
+    const burger = document.querySelector('.burger');
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      list.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+
 <script>
   const burger = document.querySelector('.burger');
   const list   = document.getElementById('menu-mobile');
