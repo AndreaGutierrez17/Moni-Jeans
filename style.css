@@ -1,10 +1,10 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to right, #fdd700, #0033a0, #ce1126);
+  background-color: #fff1f1;
   color: #fff;
 }
 
-body { padding-top: 72px; }
+body > .header { padding-top: 72px; }
 
 .menu {
   display: flex;
@@ -16,7 +16,7 @@ body { padding-top: 72px; }
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .menu-left {
@@ -126,7 +126,7 @@ body { padding-top: 72px; }
   max-height: 500px;
   width: auto;
   animation: slideInRight 1.2s ease-out forwards;
-  margin-top: -80px;
+  margin-top: 40px;
 }
 
 .sobre-nosotros {
@@ -1010,7 +1010,7 @@ footer.footer img.logo {
   inset:0;
   background: url("img/logo-moni.png") no-repeat center center;
   /* tamaño responsivo: crece con el ancho de la pantalla */
-  background-size: clamp(600px, 90vw, 1400px);
+  background-size: clamp(400px, 80vw, 1200px);
   opacity: .12;
   pointer-events:none;
   z-index: 0;
@@ -1263,53 +1263,4 @@ footer.footer img.logo {
 @keyframes rise {
   from { opacity:0; transform: translateY(16px) }
   to   { opacity:1; transform: translateY(0) }
-}
-/* ===== Hero: imagen principal más responsiva ===== */
-.model-img img{
-  width: clamp(260px, 86vw, 980px);
-  max-height: clamp(220px, 52vh, 560px);
-  height: auto;
-  object-fit: contain;
-  margin-top: 0;            /* por defecto sin desplazamiento */
-}
-
-/* En pantallas grandes, recupera un pequeño “lift” si lo quieres */
-@media (min-width: 992px){
-  .model-img img{
-    margin-top: -40px;      /* menos agresivo que -80px */
-  }
-}
-
-/* ===== Watermark del header (marca de agua) mejor balanceada ===== */
-.header{
-  min-height: clamp(320px, 58vh, 760px);  /* un poco más de aire en desktop */
-}
-.header::after{
-  /* tamaño y colocación más suaves en general */
-  background-size: clamp(380px, 70vw, 1200px);
-  background-position: center 48%;
-  opacity: .10;
-}
-
-@media (max-width: 768px){
-  .header{
-    min-height: clamp(260px, 46vh, 520px);
-  }
-  .header::after{
-    background-size: clamp(180px, 56vw, 360px); /* más pequeño en móvil */
-    background-position: center 42%;
-    opacity: .12;
-  }
-}
-
-/* ===== Alineación del logo “Moni” dentro del H1 ===== */
-/* Crea una clase para el logo en línea en el título */
-.moni-title .brand-logo-inline{
-  height: 1em;                  /* escala con el tamaño del título */
-  width: auto;
-  display: inline-block;
-  margin-right: .25em;
-  vertical-align: -0.18em;      /* SUBE ligeramente el logo respecto a la línea base */
-  filter: drop-shadow(0 1px 0 rgba(255,255,255,.35)) 
-          drop-shadow(0 2px 6px rgba(0,0,0,.15));
 }
