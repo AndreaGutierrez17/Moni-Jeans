@@ -347,7 +347,13 @@ footer.footer img.logo {
  .social-icons { position: absolute; right: 10px; top: 10px; }
  /* Colores para las redes sociales */
  .facebook-icon { color: #1877f2; } /* Color azul de Facebook */
- .instagram-icon { background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d);-webkit-background-clip: text; color: transparent; } /* Gradiente de Instagram */
+ .instagram-icon {
+  background: linear-gradient(to right, #f58529, #d62976, #8a3ab9, #fd1d1d);
+  background-clip: text;              /* estándar */
+  -webkit-background-clip: text;      /* soporte para WebKit */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}/* Gradiente de Instagram */
  .tiktok-icon { color: #000000; } /* Color negro de TikTok */
  
 
