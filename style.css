@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #fff1f1;
+  background-color: #fef4e1;
   color: #fff;
 }
 
@@ -170,7 +170,7 @@ body > .header { padding-top: 72px; }
 }
 
  :root{
-    --moni-bg: #efe6d9;          /* beige suave de fondo */
+    --moni-bg: #fef4e1;          /* beige suave de fondo */
     --moni-ink: #2b2623;         /* texto principal */
     --moni-muted:#6e645e;        /* texto suave */
     --moni-shadow: 0 10px 30px rgba(0,0,0,.12);
@@ -221,7 +221,7 @@ body > .header { padding-top: 72px; }
   /* Tarjeta de video */
   .moni-media{ width:100%; }
   .moni-card{
-    background: #fff;
+    background: #fef4e1;
     border-radius: var(--card-radius);
     box-shadow: var(--moni-shadow);
     overflow: hidden;
@@ -364,15 +364,6 @@ footer.footer img.logo {
 }
 
 
-/* Si dejas el <span class="moni-gradient"> en el H1,
-   anulamos su degradado para que herede el del título completo */
-.moni-title .moni-gradient{
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: inherit !important; /* hereda el 'transparent' del padre */
-}
-
 /* ——— 2) Mantén la animación de entrada del bloque hero ——— */
 /* Ya tienes fadeInHeader en .moni-hero; añadimos una sutil al texto/video */
 .moni-copy{ 
@@ -384,24 +375,6 @@ footer.footer img.logo {
   animation: moniFade .8s ease-out .15s forwards;
 }
 @keyframes moniFade{ to{ opacity:1; transform: translateY(0); } }
-
-.moni-title {
-  color: #2B2623;              /* texto base */
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  line-height: 1.1;
-  font-size: clamp(28px, 4.2vw, 54px);
-  margin: 0 0 14px;
-  text-align: center;
-}
-
-/* “Moni Jeans” en plata + brillo sutil */
-.moni-title__brand {
-  color:rgba ;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.6),
-  0 2px 6px rgba(0,0,0,0.15);
-}
-
 
 /* Limita el ancho de la tarjeta del video en desktop para que no invada la hoja */
 .moni-card {
@@ -438,7 +411,7 @@ footer.footer img.logo {
 
 /* Paleta base ya usada */
 :root{
-  --moni-bg: #efe6d9;          /* beige suave */
+  --moni-bg: #fef4e1;          /* beige suave */
   --moni-ink: #2b2623;         /* negro cacao */
   --moni-muted:#6e645e;
   --moni-gold:#D4B253;         /* acento sutil */
@@ -1270,3 +1243,125 @@ footer.footer img.logo {
   from { opacity:0; transform: translateY(16px) }
   to   { opacity:1; transform: translateY(0) }
 }
+
+/* ====== TÍTULO ====== */
+.mj-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;  /* evita desbordes en pantallas pequeñas */
+  gap: 0.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.mj-title-prefix,
+.mj-title-suffix {
+  font-weight: 700;
+  color: #2c2c2c;
+}
+
+.mj-title-logo {
+  height: 2.2rem;
+  margin: 0 0.3rem;
+  vertical-align: middle;
+}
+
+/* ====== SECCIÓN TEXTO + VIDEO ====== */
+.intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.moni-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.moni-lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.moni-media {
+  flex: 1;
+  min-width: 280px;
+}
+
+.moni-video {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .mj-title-line {
+    font-size: 1.6rem;
+  }
+  .mj-title-logo {
+    height: 1.6rem;
+  }
+  .intro-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .moni-lead {
+    text-align: center;
+  }
+}
+
+/* === Ajustes responsive extra (añadir al final) === */
+@media (max-width: 768px) {
+  /* apilar columnas y centrar textos en móvil */
+  .intro-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;       /* un poquito menos de separación para móvil */
+  }
+
+  .moni-text,
+  .moni-media {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* título legible y compacto en móvil */
+  .mj-title-line {
+    font-size: clamp(20px, 6vw, 28px);
+    gap: 0.4rem;
+  }
+  .mj-title-logo {
+    height: 1.4rem;         /* logo más pequeño para que no salte de línea */
+    max-height: 10vw;       /* límite relativo al ancho de pantalla */
+    width: auto;
+    vertical-align: middle; /* alinea bonito con el texto */
+  }
+
+  /* texto centrado en móvil (ya lo tenías, reforzamos) */
+  .moni-lead { text-align: center; }
+
+  /* video siempre al 100% del contenedor */
+  .moni-video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 420px) {
+  /* ultra-compacto en pantallas muy pequeñas */
+  .mj-title-line { gap: 0.3rem; }
+  .mj-title-logo { height: 1.15rem; }
+}
+
+@media (max-width: 340px) { .mj-title-logo { height: 1rem; } }
